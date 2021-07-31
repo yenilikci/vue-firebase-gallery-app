@@ -2,7 +2,7 @@
   <form>
     <label>
       <input type="file" @change="uploadFile" />
-      <span> <i class="fas fa-cloud-upload-alt"></i>Resim Yükle </span>
+      <span> <i class="fas fa-cloud-upload-alt"></i>Upload a picture</span>
     </label>
     <div class="output">
       <div v-if="fileError" class="error">
@@ -66,7 +66,7 @@ label span i {
 }
 label {
   display: block;
-  width: 150px;
+  width: 160px;
   height: 30px;
   background-color: var(--primary);
   border: 2px solid var(--success);
