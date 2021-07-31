@@ -11,13 +11,19 @@
       <div v-if="file">
         {{ file.name }}
       </div>
+      <ProgressBar v-if="file" :file="file" />
     </div>
   </form>
 </template>
 
 <script>
 import { ref } from "vue";
+import ProgressBar from "./ProgressBar.vue";
+
 export default {
+  components: {
+    ProgressBar,
+  },
   setup() {
     const file = ref("");
     const fileError = ref("");
