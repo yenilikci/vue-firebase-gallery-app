@@ -11,7 +11,10 @@
       <div v-if="file">
         {{ file.name }}
       </div>
-      <ProgressBar v-if="file" :file="file" />
+      <ProgressBar v-if="file" :file="file" @Ok="file = null" />
+      <!--
+      {{ /* Ok = context emit */}}
+      -->
     </div>
   </form>
 </template>
