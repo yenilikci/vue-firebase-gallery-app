@@ -1,14 +1,45 @@
 <template>
   <form>
     <label>
-      <input type="file" />
+      <input type="file" @change="uploadFile" />
       <span> <i class="fas fa-cloud-upload-alt"></i>Resim Yükle </span>
     </label>
+    <div class="output">
+      <div v-if="fileError" class="error">
+        {{ fileError }}
+      </div>
+      <div v-if="file">
+        {{ file.name }}
+      </div>
+    </div>
   </form>
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+export default {
+  setup() {
+    const file = ref("");
+    const fileError = ref("");
+
+    const types = ["image/png", "image/jpeg"];
+
+    const uploadFile = (e) => {
+      //console.log(e);
+      let chosen = e.target.files[0];
+      //console.log(chosen);
+
+      if (chosen && types.includes(chosen.type)) {
+        file.value = chosen;
+        fileError.value = null;
+      } else {
+        file.value = null;
+        fileError.value = "Please select image file (png or jpeg)";
+      }
+    };
+    return { uploadFile, file, fileError };
+  },
+};
 </script>
 
 <style>
@@ -41,5 +72,12 @@ label:hover {
   background: #2f3542;
   color: white;
   border: 2px solid var(--primary);
+}
+.output {
+  height: 40px;
+  font-size: 0.8rem;
+}
+.error {
+  color: var(--error);
 }
 </style>
