@@ -9,7 +9,7 @@
 export default {};
 </script>
 
-<style scoped>
+<style>
 .title h1 {
   color: var(--secondary);
   font-size: 2rem;
