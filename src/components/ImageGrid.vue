@@ -1,9 +1,18 @@
 <template>
-  <div>Resim Grid</div>
+  <div>
+    {{ documents }}
+  </div>
 </template>
 
 <script>
-export default {};
+import useCollection from "../composables/useFirestore";
+
+export default {
+  setup(){
+    const {documents} = useCollection('images');
+    return {documents};
+  }
+};
 </script>
 
 <style scoped>
