@@ -11,7 +11,7 @@ export default {};
 
 <style scoped>
 .title h1 {
-  color: red;
+  color: var(--secondary);
   font-size: 2rem;
   letter-spacing: 2px;
   margin: 40px 0 10px 0;
@@ -19,6 +19,6 @@ export default {};
 }
 .title p {
   text-align: center;
-  color: blue;
+  color: var(--primary);
 }
 </style>
