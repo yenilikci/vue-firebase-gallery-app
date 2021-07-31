@@ -1,5 +1,12 @@
 <template>
-  <div class="progress-bar">yükleniyor</div>
+  <div
+    class="progress-bar"
+    :style="
+       {
+        width: progress + '%'
+      }
+    "
+  ></div>
 </template>
 
 <script>
@@ -13,12 +20,22 @@ export default {
 
     watchEffect(() => {
       if (progress.value >= 100) {
-        context.emit("Ok");
+        context.emit("ok");
       }
     });
+
+    return { progress };
   },
 };
 </script>
 
-<style scoped>
+<style>
+.progress-bar {
+  display: block;
+  height: 6px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  border-radius: 6px;
+  margin-top: 20px;
+}
 </style>
