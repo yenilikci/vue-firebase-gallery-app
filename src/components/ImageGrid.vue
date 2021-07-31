@@ -1,6 +1,11 @@
 <template>
   <div class="img-grid">
-    <div v-for="img in documents" :key="img.id" class="img-wrap">
+    <div
+      v-for="img in documents"
+      :key="img.id"
+      class="img-wrap"
+      @click="handleClick(img.url)"
+    >
       <img :src="img.url" />
     </div>
   </div>
@@ -10,9 +15,14 @@
 import useCollection from "../composables/useFirestore";
 
 export default {
-  setup() {
+  setup(props, context) {
     const { documents } = useCollection("images");
-    return { documents };
+
+    const handleClick = (url) => {
+      context.emit("selected", url);
+    };
+
+    return { documents, handleClick };
   },
 };
 </script>

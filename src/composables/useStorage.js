@@ -16,7 +16,6 @@ const useStorage = (file) => {
             //console.log(snap);
             const percentile = (snap.bytesTransferred / snap.totalBytes) * 100;
             progress.value = percentile;
-            console.log(progress.value)
         }, (err) => {
             error.value = err;
         }, async () => {
